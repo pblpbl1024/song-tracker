@@ -1,0 +1,53 @@
+$font-primary: Noto Sans HK;
+$font-secondary: Calibri;
+
+.body {
+  text-align: center;
+  font-family: $font-primary, $font-secondary;
+  padding: 20px;
+  background: linear-gradient(rgb(255, 255, 255), rgb(245, 245, 245));
+  min-height: 100vh;
+}
+
+button {
+  margin: 10px;
+}
+
+p {
+  margin-bottom: 5px;
+}
+
+input {
+  margin: 10px;
+}
+
+form {
+  display: inline-block !important;
+}
+
+img {
+  margin: 10px;
+  width: 200px;
+  height: 200px;
+}
+
+.profile {
+  border-radius: 100px;
+  object-fit: cover;
+}
+
+.track {
+  display: inline-block;
+  vertical-align: top;
+  width: 220px;
+}
+
+.trackImage {
+  transition: width 0.05s, height 0.05s, margin 0.05s;
+}
+
+.trackImage:hover {
+  width: 220px;
+  height: 220px;
+  margin: 0px;
+}
