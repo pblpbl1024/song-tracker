@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/song-tracker/static/css/main.b0d57f8a.chunk.css",
+    "main.js": "/song-tracker/static/js/main.c52c40ee.chunk.js",
+    "main.js.map": "/song-tracker/static/js/main.c52c40ee.chunk.js.map",
+    "runtime-main.js": "/song-tracker/static/js/runtime-main.ad53f00d.js",
+    "runtime-main.js.map": "/song-tracker/static/js/runtime-main.ad53f00d.js.map",
+    "static/css/2.1d632f7f.chunk.css": "/song-tracker/static/css/2.1d632f7f.chunk.css",
+    "static/js/2.35de88c8.chunk.js": "/song-tracker/static/js/2.35de88c8.chunk.js",
+    "static/js/2.35de88c8.chunk.js.map": "/song-tracker/static/js/2.35de88c8.chunk.js.map",
+    "static/js/3.be26b47f.chunk.js": "/song-tracker/static/js/3.be26b47f.chunk.js",
+    "static/js/3.be26b47f.chunk.js.map": "/song-tracker/static/js/3.be26b47f.chunk.js.map",
+    "index.html": "/song-tracker/index.html",
+    "static/css/2.1d632f7f.chunk.css.map": "/song-tracker/static/css/2.1d632f7f.chunk.css.map",
+    "static/css/main.b0d57f8a.chunk.css.map": "/song-tracker/static/css/main.b0d57f8a.chunk.css.map",
+    "static/js/2.35de88c8.chunk.js.LICENSE.txt": "/song-tracker/static/js/2.35de88c8.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ad53f00d.js",
+    "static/css/2.1d632f7f.chunk.css",
+    "static/js/2.35de88c8.chunk.js",
+    "static/css/main.b0d57f8a.chunk.css",
+    "static/js/main.c52c40ee.chunk.js"
+  ]
+}
