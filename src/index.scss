@@ -1,12 +1,24 @@
 $font-primary: Noto Sans HK;
 $font-secondary: Calibri;
+$footer-height: 34px;
 
 .body {
   text-align: center;
   font-family: $font-primary, $font-secondary;
   padding: 20px;
-  background: linear-gradient(rgb(255, 255, 255), rgb(245, 245, 245));
+  padding-bottom: 20px + $footer-height;
+  background-color: #FBAB7E;
+  background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
   min-height: 100vh;
+
+}
+
+.footer {
+  position: fixed;
+  bottom: 0; left: 0;
+  background: rgb(52,58,64);
+  width: 100%;
+  color: white;
 }
 
 button {
@@ -14,7 +26,7 @@ button {
 }
 
 p {
-  margin-bottom: 5px;
+  margin: 5px;
 }
 
 input {
@@ -44,6 +56,7 @@ img {
 
 .trackImage {
   transition: width 0.05s, height 0.05s, margin 0.05s;
+  cursor: pointer;
 }
 
 .trackImage:hover {

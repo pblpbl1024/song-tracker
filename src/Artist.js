@@ -23,8 +23,10 @@ function Artist({artist, tracks}) {
     return (
         <div>
             <h3>{name}</h3>
-            <p>{followers.total} followers</p>
-            <p>{genres.length > 0 ? "Genres: " + genres.join(", ") : null}</p>
+            <p>{followers.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} followers</p>
+            {
+                //<p>{genres.length > 0 ? "Genres: " + genres.join(", ") : null}</p>
+            }
             {
                 //check if images[0] isn't null before accessing it
                 images[0] ? (
@@ -42,7 +44,7 @@ function Artist({artist, tracks}) {
                     return (
                         <div key={id} onClick={() => playAudio(preview_url)} className="track">
                             <img src={album.images[0].url} className="trackImage" alt=""/>
-                            <p style={{marginBottom: 10}}>{name}</p>
+                            <p style={{marginTop: 0, marginBottom: 10}}>{name}</p>
                         </div>
                     )
                 })
