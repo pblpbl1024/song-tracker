@@ -1,35 +1,16 @@
-import React, {useState} from "react";
+import React from "react";
 
-function Artist({artist, tracks}) {
-    //audio object for playing previews
-    const [audio, setAudio] = useState(null);
-    if(!artist) return null;
+function Artist({artist, tracks, updateAudio, setAudioUrl}) {
+    if(artist === null || tracks.length === 0) return null;
     //destructure the artist object
-    const {images, name, followers, genres} = artist;
-
-    function playAudio(previewUrl) {
-        if(audio && audio.src === previewUrl)
-        {
-            if(audio.paused) audio.play(); else audio.pause();
-        }
-        else
-        {
-            if(audio && !audio.paused) audio.pause();
-            //note: this code avoids the issue of setState doing asynchronous updates to audio
-            const newAudio = new Audio(previewUrl);
-            setAudio(newAudio); newAudio.play();
-        }
-    }
+    const {images, name, followers} = artist;
     return (
         <div>
             <h3>{name}</h3>
-            <p>{followers.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} followers</p>
+            <p>{format(followers.total)} followers</p>
             {
-                //<p>{genres.length > 0 ? "Genres: " + genres.join(", ") : null}</p>
-            }
-            {
-                //check if images[0] isn't null before accessing it
-                images[0] ? (
+                //check if images[0] isn't undefined before accessing it
+                images[0] !== undefined ? (
                     <img src={images[0].url} className="profile" alt=""/>
                 ) : (
                     <p>This artist doesn't have a profile picture.</p>
@@ -42,8 +23,9 @@ function Artist({artist, tracks}) {
                 tracks.map(track => {
                     const {id, name, album, preview_url} = track;
                     return (
-                        <div key={id} onClick={() => playAudio(preview_url)} className="track">
+                        <div key={id} onClick={() => updateAudio(preview_url, name)} className="track">
                             <img src={album.images[0].url} className="trackImage" alt=""/>
+                            <audio id={preview_url} onEnded={() => setAudioUrl("")}src={preview_url}/>
                             <p style={{marginTop: 0, marginBottom: 10}}>{name}</p>
                         </div>
                     )
@@ -52,6 +34,11 @@ function Artist({artist, tracks}) {
             </div>
         </div>
     )
+}
+
+function format(x)
+{
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 export default Artist;
