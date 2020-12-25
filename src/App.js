@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import Artist from "./Artist";
 import Search from "./Search";
 import Info from "./Info";
+import {Container, Row, Col} from "react-bootstrap";
+import RangeSlider from "react-bootstrap-range-slider";
 
 function App() {
     //put all global variables here since parent <-> child is possible
@@ -11,9 +13,16 @@ function App() {
     const [audioUrl, setAudioUrl] = useState("");
     const [song, setSong] = useState("");
     const [paused, setPaused] = useState(true);
+    const [volume, setVolume] = useState(50);
 
     function getArtistName() {
         return artist === null ? "" : artist.name;
+    }
+
+    function updateVolume(vol) {
+        setVolume(vol);
+        let audio = document.getElementById(audioUrl);
+        if(audio !== null) audio.volume = vol/100;
     }
 
     function updateAudio(previewUrl, song) {
@@ -22,6 +31,7 @@ function App() {
             if (audio !== null) {
                 if (audio.paused) audio.play(); else audio.pause();
                 setPaused(audio.paused);
+                console.log(audio.volume);
             }
         } else {
             if (audio !== null && !audio.paused) {
@@ -30,7 +40,7 @@ function App() {
             }
             let newAudio = document.getElementById(previewUrl);
             if (newAudio !== null) {
-                newAudio.currentTime = 0;
+                newAudio.currentTime = 0; newAudio.volume = volume/100;
                 newAudio.play();
                 setPaused(false);
             }
@@ -45,6 +55,14 @@ function App() {
             <h1>Song Tracker</h1>
             <Search artist={artist} setArtist={setArtist} setTracks={setTracks}
                     updateAudio={updateAudio} getArtistName={getArtistName}/>
+            <p>Volume</p>
+            <Container>
+                <Row>
+                    <Col xs={{span: 4, offset: 4}}>
+                        <RangeSlider value={volume} onChange={e => updateVolume(e.target.value)}/>
+                    </Col>
+                </Row>
+            </Container>
             <hr/>
             <Artist artist={artist} tracks={tracks} updateAudio={updateAudio} setAudioUrl={setAudioUrl}/>
             <div className={(audioUrl !== "") ? "footer-active" : "footer"}>

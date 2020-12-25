@@ -7,8 +7,9 @@ $footer-height: 34px;
   font-family: $font-primary, $font-secondary;
   padding: 20px;
   padding-bottom: 20px + $footer-height;
-  background-color: #FBAB7E;
-  background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+  background-color: #74EBD5;
+  background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+  //background: linear-gradient(rgb(255, 255, 255), rgb(245, 245, 245));
   min-height: 100vh;
 }
 
@@ -36,10 +37,6 @@ button {
 
 p {
   margin: 5px;
-}
-
-input {
-  margin: 10px;
 }
 
 form {
