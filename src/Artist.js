@@ -1,7 +1,20 @@
 import React from "react";
+import search from "./assets/search.png";
 
-function Artist({artist, tracks, updateAudio, setAudioUrl}) {
-    if(artist === null || tracks.length === 0) return null;
+function Artist({artist, tracks, notFound, updateAudio, setAudioUrl}) {
+    if(artist === null || tracks.length === 0)
+    {
+        return (
+            <div>
+            <img style={{margin: 10}} src={search} alt="search-icon"/>
+            <p>
+            {
+                notFound ? "No results found." : "Artist data and top tracks will appear here."
+            }
+            </p>
+            </div>
+        );
+    }
     //destructure the artist object
     const {images, name, followers} = artist;
     return (

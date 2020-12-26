@@ -28,7 +28,6 @@ $footer-height: 34px;
   background: rgb(52,58,64);
   width: 100%;
   color: white;
-  transition: bottom 0.5s;
 }
 
 button {
@@ -43,15 +42,11 @@ form {
   display: inline-block !important;
 }
 
-img {
-  margin: 10px;
-  width: 200px;
-  height: 200px;
-}
-
 .profile {
   border-radius: 100px;
   object-fit: cover;
+  width: 200px;
+  height: 200px;
 }
 
 .track {
@@ -63,10 +58,13 @@ img {
 .trackImage {
   transition: width 0.05s, height 0.05s, margin 0.05s;
   cursor: pointer;
+  margin: 10px;
+  width: 200px;
+  height: 200px;
 }
 
 .trackImage:hover {
+  margin: 0px;
   width: 220px;
   height: 220px;
-  margin: 0px;
 }

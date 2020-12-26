@@ -7,13 +7,14 @@ import RangeSlider from "react-bootstrap-range-slider";
 
 function App() {
     //put all global variables here since parent <-> child is possible
-    //but child <-> child isn't possible
+    //but child <-> child isn't (directly) possible
     const [artist, setArtist] = useState(null);
     const [tracks, setTracks] = useState([]);
     const [audioUrl, setAudioUrl] = useState("");
     const [song, setSong] = useState("");
     const [paused, setPaused] = useState(true);
     const [volume, setVolume] = useState(50);
+    const [notFound, setNotFound] = useState(false);
 
     function getArtistName() {
         return artist === null ? "" : artist.name;
@@ -53,8 +54,8 @@ function App() {
         <div>
             <Info/>
             <h1>Song Tracker</h1>
-            <Search artist={artist} setArtist={setArtist} setTracks={setTracks}
-                    updateAudio={updateAudio} getArtistName={getArtistName}/>
+            <Search setArtist={setArtist} setTracks={setTracks}
+                    updateAudio={updateAudio} getArtistName={getArtistName} setNotFound={setNotFound}/>
             <p>Volume</p>
             <Container>
                 <Row>
@@ -64,7 +65,8 @@ function App() {
                 </Row>
             </Container>
             <hr/>
-            <Artist artist={artist} tracks={tracks} updateAudio={updateAudio} setAudioUrl={setAudioUrl}/>
+            <Artist artist={artist} tracks={tracks} notFound={notFound}
+                    updateAudio={updateAudio} setAudioUrl={setAudioUrl}/>
             <div className={(audioUrl !== "") ? "footer-active" : "footer"}>
                 <p>{audioUrl !== "" ? (paused ? getArtistName() + " - " + song + " (Paused)" :
                     getArtistName() + " - " + song + " (Playing)") : "Not playing"}</p>

@@ -4,7 +4,7 @@ import {Form, Button} from "react-bootstrap";
 const API_ADDRESS = "https://spotify-api-wrapper.appspot.com/";
 
 //parent functions can be called in the child
-function Search({artist, setArtist, setTracks, updateAudio, getArtistName}) {
+function Search({setArtist, setTracks, updateAudio, getArtistName, setNotFound}) {
     const [searching, setSearching] = useState(false);
 
     function keyDown(e) {
@@ -52,6 +52,7 @@ function Search({artist, setArtist, setTracks, updateAudio, getArtistName}) {
                 {
                     updateAudio("", "");
                     setSearching(false);
+                    setNotFound(true);
                     setArtist(null);
                     setTracks([]);
                 }
@@ -63,8 +64,8 @@ function Search({artist, setArtist, setTracks, updateAudio, getArtistName}) {
             <Form inline>
                 <Form.Control id="search-bar"
                     placeholder="Search for an artist..."
-                    onKeyDown={e => keyDown(e)}
-                    />
+                    maxLength={32}
+                    onKeyDown={e => keyDown(e)} />
                 <Button
                     variant="success"
                     onClick={search}
