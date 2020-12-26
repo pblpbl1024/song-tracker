@@ -29,11 +29,9 @@ function Search({setArtist, setTracks, updateAudio, getArtistName, setNotFound})
                     //get the top artist from the artists object returned from the fetch
                     //artist is an object with many properties
                     const queryArtist = json.artists.items[0];
-                    console.log(queryArtist);
 
                     //only fetch and stop sounds again if the artist is different
                     if(queryArtist.name !== getArtistName()) {
-                        setArtist(queryArtist);
                         //get their top tracks (it wasn't in the artist object already)
                         fetch(`${API_ADDRESS}/artist/${queryArtist.id}/top-tracks`)
                             .then(response => response.json())
@@ -41,8 +39,8 @@ function Search({setArtist, setTracks, updateAudio, getArtistName, setNotFound})
                                 setSearching(false);
                                 updateAudio("", "");
                                 const tracks = json.tracks;
-                                console.log(tracks);
-                                setTracks(tracks);
+                                setArtist(queryArtist); setTracks(tracks);
+                                console.log(queryArtist); console.log(tracks);
                             })
                             .catch(error => alert(error.message));
                     }

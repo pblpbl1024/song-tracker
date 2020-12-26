@@ -6,7 +6,7 @@ function Artist({artist, tracks, notFound, updateAudio, setAudioUrl}) {
     {
         return (
             <div>
-            <img style={{margin: 10}} src={search} alt="search-icon"/>
+            <img src={search} alt="search-icon"/>
             <p>
             {
                 notFound ? "No results found." : "Artist data and top tracks will appear here."
@@ -16,7 +16,7 @@ function Artist({artist, tracks, notFound, updateAudio, setAudioUrl}) {
         );
     }
     //destructure the artist object
-    const {images, name, followers} = artist;
+    const {external_urls, images, name, followers} = artist;
     return (
         <div>
             <h3>{name}</h3>
@@ -24,7 +24,8 @@ function Artist({artist, tracks, notFound, updateAudio, setAudioUrl}) {
             {
                 //check if images[0] isn't undefined before accessing it
                 images[0] !== undefined ? (
-                    <img src={images[0].url} className="profile" alt=""/>
+                    <a href={external_urls.spotify} target={"_blank"} rel={"noreferrer"}>
+                        <img src={images[0].url} className="profile" alt=""/> </a>
                 ) : (
                     <p>This artist doesn't have a profile picture.</p>
                 )

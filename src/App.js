@@ -60,7 +60,7 @@ function App() {
             <Container>
                 <Row>
                     <Col xs={{span: 4, offset: 4}}>
-                        <RangeSlider value={volume} onChange={e => updateVolume(e.target.value)}/>
+                        <RangeSlider variant={"dark"} value={volume} onChange={e => updateVolume(e.target.value)}/>
                     </Col>
                 </Row>
             </Container>
