@@ -27,6 +27,7 @@ function App() {
     }
 
     function updateAudio(previewUrl, song) {
+        if(previewUrl === null) { alert("No preview is available for this song."); return; }
         let audio = document.getElementById(audioUrl);
         if (audioUrl === previewUrl) {
             if (audio !== null) {
